@@ -3,8 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card">
+                @if (false)
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
@@ -66,6 +67,48 @@
                         </div>
                     </form>
                 </div>
+                @endif
+
+                <!-- Default form login -->
+<form class="text-center p-5">
+
+<p class="h4 mb-4">Sign in</p>
+
+<!-- Material input -->
+<div class="md-form">
+  <!-- Email -->
+  <input type="email" id="email" class="form-control">
+  <label for="email">E-mail</label>
+</div>
+<div class="md-form">
+  <!-- Password -->
+  <input type="password" id="password" class="form-control">
+  <label for="password">Password</label>
+</div>
+
+<div class="d-flex justify-content-around">
+    <div>
+        <!-- Remember me -->
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+            <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+        </div>
+    </div>
+    <div>
+        <!-- Forgot password -->
+        <a href="">Forgot password?</a>
+    </div>
+</div>
+
+<!-- Sign in button -->
+<button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+<!-- Register -->
+<p>Not a member?
+    <a href="">Register</a>
+</p>
+
+</form>
             </div>
         </div>
     </div>

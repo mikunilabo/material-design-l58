@@ -11,5 +11,29 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+ /**
+  * Custom settings
+  */
+ mix.webpackConfig({
+     resolve: {
+         alias: {
+             'mdbootstrap.js': 'mdbootstrap/js/mdb.js'
+         }
+     }
+ });
+
+mix.js('resources/js/app.js', 'public/js');
+
+mix.sass('resources/sass/app.scss', 'public/css');
+
+/**
+ * Source Maps
+ */
+mix.sourceMaps();
+
+/**
+ * Versioning
+ */
+if (mix.inProduction()) {
+    mix.version();
+}
