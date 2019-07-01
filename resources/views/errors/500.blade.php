@@ -12,7 +12,7 @@
                         <h4 class="pt-1">@lang ('An internal server error has occurred.')</h4>
                         <p class="text-muted">
                             @lang ('Please contact the administrator.')<br>
-                            <a href="{{ route('home') }}">@lang ('Return to home')</a>
+                            <a href="{{ route('root') }}">@lang ('Return to Top')</a>
                         </p>
                     </div>
                 </div>

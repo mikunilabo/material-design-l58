@@ -12,7 +12,7 @@
                         <h4 class="pt-1">@lang ('The page has expired.')</h4>
                         <p class="text-muted">
                             @lang ('Sorry to trouble you, but please refresh the page and try again.')<br>
-                            <a href="{{ route('home') }}">@lang ('Return to home')</a>
+                            <a href="{{ route('root') }}">@lang ('Return to Top')</a>
                         </p>
                     </div>
                 </div>
