@@ -12,10 +12,7 @@ declare(strict_types=1);
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'HomeController')->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
