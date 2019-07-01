@@ -56,6 +56,6 @@ class LoginController extends Controller
      */
     private function loggedOut(Request $request)
     {
-        return redirect($this->redirectTo());
+        return redirect()->route('root');
     }
 }

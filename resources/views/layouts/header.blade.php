@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top aqua-gradient py-3 mb-3 font-weight-bold z-depth-1">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">
+            <a class="navbar-brand" href="{{ route('root') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="@lang ('Toggle navigation')">
@@ -11,7 +11,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home') }}">@lang ('Home')</a>
+                        </li>
+                    @endauth
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -32,7 +36,10 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('home') }}">
+                                    @lang ('Home')
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">

@@ -12,7 +12,22 @@ declare(strict_types=1);
 |
 */
 
+Route::prefix('/')->group(function () {
+    Route::get('/', 'RootController')->name('root');
 
-Route::get('/', 'HomeController')->name('home');
+    /**
+     * Authentication required
+     */
+    Route::middleware('auth')->group(function () {
 
-Auth::routes();
+        /**
+         * Email confirmation required
+         */
+        Route::middleware('verified')->group(function () {
+            Route::get('home', 'HomeController')->name('home');
+        });
+    });// Authentication required
+
+});
+
+Auth::routes(['verify' => true]);
