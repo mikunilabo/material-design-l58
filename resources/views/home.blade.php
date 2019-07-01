@@ -2,7 +2,7 @@
 
 @section('content')
     <main class="py-5">
-        <div class="container">
+        <div class="container animated fadeIn">
             <!--Section-->
             <section class="pb-4 text-center text-lg-left">
 
