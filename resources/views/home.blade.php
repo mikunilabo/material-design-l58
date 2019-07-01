@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
+@section('title', __('Top page'))
+
 @section('content')
-    <main class="py-5">
+    <main class="my-auto py-5">
         <div class="container animated fadeIn">
             <!--Section-->
             <section class="pb-4 text-center text-lg-left">

@@ -1,18 +1,20 @@
 @extends('layouts.app')
 
+@section('title', __('Login'))
+
 @section('content')
-    <main class="py-5">
+    <main class="my-auto py-5">
         <div class="container animated fadeIn">
             <section class="row justify-content-center">
                 <div class="col-md-6">
-                    <h1 class="h1-responsive font-weight-bold text-center pt-3 clearfix">@lang ('Login')</h1>
+                    <h1 class="font-weight-bold text-center pt-3">@lang ('Login')</h1>
 
-                    <form class="p-4" method="POST" action="{{ route('login') }}">
+                    <form class="p-3" method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="md-form">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
-                            <label for="email">@lang ('E-Mail Address')</label>
+                            <label for="email" class="mt-2">@lang ('E-Mail Address')</label>
 
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -21,9 +23,9 @@
                             @enderror
                         </div>
 
-                        <div class="md-form mt-5">
+                        <div class="md-form">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
-                            <label for="password">@lang ('Password')</label>
+                            <label for="password" class="mt-2">@lang ('Password')</label>
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -35,11 +37,11 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="form-check">
                                 <input type="checkbox" name="remember" id="remember" class="form-check-input" {{ old('remember') ? 'checked' : '' }} />
-                                <label class="form-check-label" for="remember">@lang ('Remember Me')</label>
+                                <label class="form-check-label cursor-pointer" for="remember">@lang ('Remember Me')</label>
                             </div>
 
                             @if (Route::has('password.request'))
-                                <div class="">
+                                <div>
                                     <a href="{{ route('password.request') }}">
                                         @lang ('Forgot Your Password?')
                                     </a>
