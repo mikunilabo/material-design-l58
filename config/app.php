@@ -172,9 +172,14 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        App\Providers\BladeServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\DatabaseServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\RelationServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\UrlServiceProvider::class,
+        App\Providers\ValidationServiceProvider::class,
 
     ],
 
