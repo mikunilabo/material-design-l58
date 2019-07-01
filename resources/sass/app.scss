@@ -1,11 +1,14 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import '~font-awesome/scss/font-awesome';
 
 // Variables
 @import 'variables';
 
+// MDBootstrap
+@import '~mdbootstrap/scss/mdb';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// MDBootstrap
-@import '~mdbootstrap/scss/mdb';
+// Custom
+@import 'custom';
