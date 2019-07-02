@@ -3,7 +3,7 @@
 @section('title', __('Login'))
 
 @section('content')
-    <main class="my-auto py-5">
+    <main class="py-5 my-auto">
         <div class="container animated fadeIn">
             <section class="row justify-content-center">
                 <div class="col-md-6">
@@ -14,7 +14,7 @@
 
                         <div class="md-form">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
-                            <label for="email" class="mt-2">@lang ('E-Mail Address')</label>
+                            <label for="email" class="mt-2">@lang ('E-Mail')</label>
 
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                             @if (Route::has('password.request'))
                                 <div>
                                     <a href="{{ route('password.request') }}">
-                                        @lang ('Forgot Your Password?')
+                                        @lang ('Forgot password?')
                                     </a>
                                 </div>
                             @endif
@@ -55,9 +55,9 @@
 
                         @if (Route::has('register'))
                             <div class="text-center my-1">
-                                Not a member?
+                                @lang ('Do not have a account?')
                                 <a href="{{ route('register') }}">
-                                    @lang ('Register')
+                                    @lang ('Use registration')
                                 </a>
                             </div>
                         @endif

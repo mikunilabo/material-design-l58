@@ -3,9 +3,9 @@
 @section('title', __('Home'))
 
 @section('content')
-    <main class="my-auto py-5">
+    <main class="py-5">
         <div class="container animated fadeIn">
-            ROOT
+            @lang ('Home')
         </div>
     </main>
 @endsection

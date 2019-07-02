@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', __('Register'))
+@section('title', __('Use registration'))
 
 @section('content')
-    <main class="my-auto py-5">
+    <main class="py-5 my-auto">
         <div class="container animated fadeIn">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">@lang ('Register')</div>
+                        <div class="card-header">@lang ('Use registration')</div>
 
                         <div class="card-body">
                             <form method="POST" action="{{ route('register') }}">

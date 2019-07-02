@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top aqua-gradient py-3 mb-3 font-weight-bold z-depth-1">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top aqua-gradient py-2 font-weight-bold z-depth-1">
         <div class="container">
             <a class="navbar-brand" href="{{ route('root') }}">
                 {{ config('app.name', 'Laravel') }}
@@ -27,7 +27,7 @@
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">@lang ('Register')</a>
+                                <a class="nav-link" href="{{ route('register') }}">@lang ('Use registration')</a>
                             </li>
                         @endif
                     @else
@@ -36,13 +36,14 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('home') }}">
                                     @lang ('Home')
                                 </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="#" onclick="event.preventDefault();
+                                    if (confirm('@lang("Do you want to log out?")')) {
+                                        document.getElementById('logout-form').submit();
+                                    } return false;">
                                     @lang ('Logout')
                                 </a>
 

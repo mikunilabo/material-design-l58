@@ -3,7 +3,7 @@
 @section('title', __('Top page'))
 
 @section('content')
-    <main class="my-auto py-5">
+    <main class="py-5 my-auto">
         <div class="container animated fadeIn">
             <section class="pb-4 text-center text-lg-left">
                 <h1 class="h1-responsive font-weight-bold text-center mb-5 pt-2">Recent posts</h1>
@@ -42,11 +42,11 @@
                                 <strong>Carine Fox</strong>
                             </a>, 19/08/2018
                         </p>
-                        <a href="{{ route('login') }}" class="btn btn-primary btn-md mb-3">
+                        <a href="{{ route('login') }}" class="btn btn-primary btn-lg mb-3">
                             @lang ('Login')
                         </a>
-                        <a href="{{ route('register') }}" class="btn btn-success btn-md mb-3">
-                            @lang ('Register')
+                        <a href="{{ route('register') }}" class="btn btn-success btn-lg mb-3">
+                            @lang ('Use registration')
                         </a>
                     </div>
                 </div>

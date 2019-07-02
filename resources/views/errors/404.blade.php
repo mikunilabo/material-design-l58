@@ -3,7 +3,7 @@
 @section ('title', __('404 Not found'))
 
 @section ('content')
-    <main class="my-auto py-5">
+    <main class="py-5 my-auto">
         <div class="container animated fadeIn">
             <div class="row justify-content-center">
                 <div class="col-md-6">
