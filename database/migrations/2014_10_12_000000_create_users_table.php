@@ -8,30 +8,46 @@ use Illuminate\Database\Migrations\Migration;
 class CreateUsersTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
+     * @var string
+     */
+    private $table = 'users';
+
+    /**
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-        });
+        try {
+            Schema::create($this->table, function (Blueprint $table) {
+                $table->uuid('id')->primary();
+                $table->string('name');
+                $table->string('email');
+                $table->timestamp('email_verified_at')->nullable();
+                $table->boolean('existence')
+                    ->nullable()
+                    ->storedAs('CASE WHEN deleted_at IS NULL THEN 1 ELSE NULL END');
+                $table->string('password');
+                $table->rememberToken();
+                $table->timestamps();
+                $table->softDeletes();
+
+                $table->unique([
+                    'email',
+                    'existence',
+                ]);
+            });
+        } catch (\Exception $e) {
+            report($e);
+            $this->down();
+            dd($e->getMessage());
+        }
     }
 
     /**
-     * Reverse the migrations.
-     *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists($this->table);
     }
 }
