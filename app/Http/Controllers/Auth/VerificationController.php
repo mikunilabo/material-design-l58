@@ -22,8 +22,6 @@ class VerificationController extends Controller
     use VerifiesEmails;
 
     /**
-     * Create a new controller instance.
-     *
      * @return void
      */
     public function __construct()

@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Auth;
 
-use Illuminate\Validation\Rule;
-
 final class ResetRequest extends AuthRequest
 {
     /**
@@ -18,7 +16,6 @@ final class ResetRequest extends AuthRequest
                 'string',
                 'email',
                 'max:255',
-                Rule::exists('users')->where('existence', 1),
             ],
             'password' => [
                 'required',
@@ -26,6 +23,11 @@ final class ResetRequest extends AuthRequest
                 'min:8',
                 'max:16',
                 'confirmed',
+            ],
+            'token' => [
+                'required',
+                'string',
+                'max:255',
             ],
         ];
     }
