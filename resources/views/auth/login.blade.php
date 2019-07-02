@@ -7,16 +7,17 @@
         <div class="container animated fadeIn">
             <section class="row justify-content-center">
                 <div class="col-md-6">
-                    <h1 class="font-weight-bold text-center pt-3">@lang ('Login')</h1>
+                    <h2 class="font-weight-bold text-center pt-3">@lang ('Login')</h2>
 
-                    <form class="p-3" method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}" autocomplete="off" class="p-3">
                         @csrf
 
                         <div class="md-form">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus />
-                            <label for="email" class="mt-2">@lang ('E-Mail')</label>
+                            @set ($attribute, 'email')
+                            <input id="{{ $attribute }}" type="email" class="form-control @error($attribute) is-invalid @enderror" name="{{ $attribute }}" value="{{ old($attribute) }}" required autofocus />
+                            <label for="{{ $attribute }}" class="">@lang ('E-Mail')</label>
 
-                            @error('email')
+                            @error($attribute)
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -24,10 +25,11 @@
                         </div>
 
                         <div class="md-form">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
-                            <label for="password" class="mt-2">@lang ('Password')</label>
+                            @set ($attribute, 'password')
+                            <input id="{{ $attribute }}" type="password" class="form-control @error($attribute) is-invalid @enderror" name="{{ $attribute }}" required />
+                            <label for="{{ $attribute }}" class="">@lang ('Password')</label>
 
-                            @error('password')
+                            @error($attribute)
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -36,8 +38,9 @@
 
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="form-check">
-                                <input type="checkbox" name="remember" id="remember" class="form-check-input" {{ old('remember') ? 'checked' : '' }} />
-                                <label class="form-check-label cursor-pointer" for="remember">@lang ('Remember Me')</label>
+                                @set ($attribute, 'remember')
+                                <input type="checkbox" name="{{ $attribute }}" value="1" id="{{ $attribute }}" class="form-check-input" {{ old($attribute) ? 'checked' : '' }} />
+                                <label for="{{ $attribute }}" class="form-check-label cursor-pointer">@lang ('Remember Me')</label>
                             </div>
 
                             @if (Route::has('password.request'))
@@ -49,13 +52,13 @@
                             @endif
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block my-4">
+                        <button type="submit" class="btn btn-outline-primary btn-block my-4">
                             @lang ('Login')
                         </button>
 
                         @if (Route::has('register'))
-                            <div class="text-center my-1">
-                                @lang ('Do not have a account?')
+                            <div class="text-center">
+                                @lang ('Do not have an account?')
                                 <a href="{{ route('register') }}">
                                     @lang ('Use registration')
                                 </a>

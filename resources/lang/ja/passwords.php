@@ -18,11 +18,5 @@ return [
     'reset'    => 'パスワードを再設定しました。',
     'sent'     => 'パスワード再設定用メールを送信しました。',
     'token'    => '申請されたEメールアドレスと一致しないか、有効期限切れ、またはURLが不正です。',
-
-    /**
-     * For avoiding the purpose of searching for a mail address,
-     * even if there is no registration, it seems as if it sent normally.
-     */
-    'user'     => "パスワード再設定用メールを送信しました。",
-//     'user'     => "入力されたEメールアドレスは登録されていません。",
+    'user'     => "入力されたEメールアドレスは登録されていません。",
 ];

@@ -5,65 +5,57 @@
 @section('content')
     <main class="py-5 my-auto">
         <div class="container animated fadeIn">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">@lang ('Reset Password')</div>
+            <section class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="font-weight-bold text-center pt-3">@lang ('Reset Password')</h2>
 
-                        <div class="card-body">
-                            <form method="POST" action="{{ route('password.update') }}">
-                                @csrf
+                    <form method="POST" action="{{ route('password.update') }}" autocomplete="off" class="p-3">
+                        @csrf
 
-                                <input type="hidden" name="token" value="{{ $token }}">
+                        <input type="hidden" name="token" value="{{ $token }}">
 
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">@lang ('E-Mail Address')</label>
+                        <div class="md-form">
+                            @set ($attribute, 'email')
+                            <input id="{{ $attribute }}" type="email" class="form-control @error($attribute) is-invalid @enderror" name="{{ $attribute }}" value="{{ $email ?? old($attribute) }}" required autofocus />
+                            <label for="{{ $attribute }}" class="">@lang ('E-Mail')</label>
 
-                                    <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">@lang ('Password')</label>
-
-                                    <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">@lang ('Confirm Password')</label>
-
-                                    <div class="col-md-6">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            @lang ('Reset Password')
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                            @error($attribute)
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                    </div>
+
+                        <div class="md-form">
+                            @set ($attribute, 'password')
+                            <input id="{{ $attribute }}" type="password" class="form-control @error($attribute) is-invalid @enderror" name="{{ $attribute }}" value="" autocomplete="new-password" required />
+                            <label for="{{ $attribute }}" class="">@lang ('Password')</label>
+
+                            @error($attribute)
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="md-form">
+                            @set ($attribute, 'password_confirmation')
+                            <input id="{{ $attribute }}" type="password" class="form-control @error($attribute) is-invalid @enderror" name="{{ $attribute }}" value="" autocomplete="new-password" required />
+                            <label for="{{ $attribute }}" class="">@lang ('Confirm Password')</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-danger btn-block my-4">
+                            @lang ('Submit')
+                        </button>
+
+                        <div class="text-center">
+                            <a href="{{ route('login') }}">
+                                @lang ('Back to sign in page.')
+                            </a>
+                        </div>
+                    </form>
                 </div>
-            </div>
+            </section>
         </div>
     </main>
 @endsection

@@ -5,77 +5,68 @@
 @section('content')
     <main class="py-5 my-auto">
         <div class="container animated fadeIn">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-header">@lang ('Use registration')</div>
+            <section class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2 class="font-weight-bold text-center pt-3">@lang ('Use registration')</h2>
 
-                        <div class="card-body">
-                            <form method="POST" action="{{ route('register') }}">
-                                @csrf
+                    <form method="POST" action="{{ route('register') }}" autocomplete="off" class="p-3">
+                        @csrf
 
-                                <div class="form-group row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">@lang ('Name')</label>
+                        <div class="md-form">
+                            @set ($attribute, 'name')
+                            <input id="{{ $attribute }}" type="text" class="form-control @error($attribute) is-invalid @enderror" name="{{ $attribute }}" value="{{ old($attribute) }}" required autofocus />
+                            <label for="{{ $attribute }}" class="">@lang ('Name')</label>
 
-                                    <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">@lang ('E-Mail Address')</label>
-
-                                    <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">@lang ('Password')</label>
-
-                                    <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">@lang ('Confirm Password')</label>
-
-                                    <div class="col-md-6">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            @lang ('Register')
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                            @error($attribute)
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                    </div>
+
+                        <div class="md-form">
+                            @set ($attribute, 'email')
+                            <input id="{{ $attribute }}" type="email" class="form-control @error($attribute) is-invalid @enderror" name="{{ $attribute }}" value="{{ old($attribute) }}" required />
+                            <label for="{{ $attribute }}" class="">@lang ('E-Mail')</label>
+
+                            @error($attribute)
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="md-form">
+                            @set ($attribute, 'password')
+                            <input id="{{ $attribute }}" type="password" class="form-control @error($attribute) is-invalid @enderror" name="{{ $attribute }}" value="" autocomplete="new-password" required />
+                            <label for="{{ $attribute }}" class="">@lang ('Password')</label>
+
+                            @error($attribute)
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="md-form">
+                            @set ($attribute, 'password_confirmation')
+                            <input id="{{ $attribute }}" type="password" class="form-control @error($attribute) is-invalid @enderror" name="{{ $attribute }}" value="" autocomplete="new-password" required />
+                            <label for="{{ $attribute }}" class="">@lang ('Confirm Password')</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-success btn-block my-4">
+                            @lang ('Submit')
+                        </button>
+
+                        <div class="text-center">
+                            @lang ('Click here if you have an account')
+                            <a href="{{ route('login') }}">
+                                @lang ('Login')
+                            </a>
+                        </div>
+                    </form>
                 </div>
-            </div>
+            </section>
         </div>
     </main>
 @endsection
